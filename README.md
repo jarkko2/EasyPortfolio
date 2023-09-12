@@ -9,7 +9,8 @@ This project uses JSON to generate simple portfolio
  * Your known technologies with labels (hobby, school etc)
  * Job and study history timelines
  * Project view with possible youtube video and github README.md file output
-
+ * Cool 3D mouse hover effect on project images
+  
  ## Install
  1. Clone project
  2. Run npm install
