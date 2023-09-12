@@ -7,8 +7,9 @@
             "React Material UI",
             "Axios"
         ],
-        "imgSrc" : "https://github.com/jarkko2/ShapeDrawer/raw/main/image.png",
+        "url" : "https://github.com/jarkko2/LazyDevPortfolio/",
+        "imgSrc" : "https://github.com/jarkko2/LazyDevPortfolio/raw/main/image.png",
         "ytVidId" : "Ty4HPFQudPY",
-        "readMeUrl" : "https://api.github.com/repos/jarkko2/ShapeDrawer/readme"
+        "readMeUrl" : "https://api.github.com/repos/jarkko2/LazyDevPortfolio/readme"
     }
 ]

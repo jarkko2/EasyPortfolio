@@ -96,7 +96,8 @@ export default function ProjectItem({ item }) {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    {item.ytVidId != null && <ProjectYoutubeVideo item={item}></ProjectYoutubeVideo>}
+                <Typography variant="body2" color="text.primary"> Link to project <a href={item.url}>{item.url}</a> </Typography>
+                    {item.ytVidId != null && <div><Divider sx={{marginTop: 5, marginBottom: 5}}></Divider> <ProjectYoutubeVideo item={item}></ProjectYoutubeVideo></div>}
                     <Divider sx={{marginTop: 5, marginBottom: 5}}></Divider>
                     <Typography variant="h5"> Project README.md file content </Typography>
                     <Divider sx={{marginTop: 5, marginBottom: 5}}></Divider>
