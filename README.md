@@ -1,5 +1,5 @@
 # LazyDevPortfolio
-React porfolio page with easy JSON configuration
+React portfolio page with easy JSON configuration
 This project uses JSON to generate simple portfolio
 
  ![Image](image.png)
