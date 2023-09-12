@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import image from '../Images/projTemp.png'
 
 // Material UI
 import CardMedia from '@mui/material/CardMedia';

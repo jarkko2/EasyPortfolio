@@ -16,7 +16,7 @@ This project uses JSON to generate simple portfolio
  2. Run npm install
  3. Run npm start
  4. Use JsonCVData/Templates as data, copy each file to JsonCVData and remove "_template" 
-
+ 5. Add your image to Images and replace naama.jpg url
  ## TODO
  * Localizations as JSON too
 
