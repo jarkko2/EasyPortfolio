@@ -20,12 +20,6 @@ const pagesDictionary = {
   projects: 'Projektit',
 };
 
-// Example of using the dictionary
-const currentPage = 'job';
-
-console.log(pagesDictionary[currentPage]); // Outputs: 'Job Page'
-
-
 function NavigationBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -34,7 +28,6 @@ function NavigationBar() {
   };
 
   const handleCloseNavMenu = (page) => {
-    console.log("Clicked " + page)
     window.location.hash = `#${page}`;
     setAnchorElNav(null);
   };

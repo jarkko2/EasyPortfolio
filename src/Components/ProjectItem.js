@@ -10,14 +10,9 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ProjectYoutubeVideo from './ProjectYoutubeVideo';
 import Divider from '@mui/material/Divider';
 import ProjectImage from './ProjectImage';
@@ -43,15 +38,10 @@ export default function ProjectItem({ item }) {
     };
 
     useEffect(() => {
-        // Replace with your GitHub repository URL
-
-        // Skip for now
-        //return;
-
         const githubRepoUrl = item.readMeUrl;
 
-        if (githubRepoUrl === "")
-        {
+        if (githubRepoUrl === "") {
+            console.warning("Github repo not set")
             return
         }
 
@@ -62,24 +52,21 @@ export default function ProjectItem({ item }) {
                 setReadmeContent(decodedContent);
             })
             .catch((error) => {
-                console.error('Error fetching README:', error);
+                if (error.response.status === 403) {
+                    console.error('Could not get README.md for ' + githubRepoUrl + ' Is the repository private?')
+                } else {
+                    console.error('Error fetching README:', error);
+                }
             });
-    }, []);
+    }, [item.readMeUrl]);
 
     return (
-        <Card sx>
-            <CardHeader
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                }
-                title={item.name}
-            />
+        <Card key={item.name}>
+            <CardHeader title={item.name}/>
             <ProjectImage item={item}> </ProjectImage>
-            <CardContent>
+            <CardContent>""
                 {item.usedTechnologies.map((name) => (
-                    <Chip label={name} color="primary" variant="outlined" sx={{margin:"5px"}}/>
+                    <Chip key={"chip_" + item.name + "_" + name} label={name} color="primary" variant="outlined" sx={{ margin: "5px" }} />
                 ))}
 
             </CardContent>
@@ -96,12 +83,12 @@ export default function ProjectItem({ item }) {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                <Typography variant="body2" color="text.primary"> Link to project <a href={item.url}>{item.url}</a> </Typography>
-                    {item.ytVidId != null && <div><Divider sx={{marginTop: 5, marginBottom: 5}}></Divider> <ProjectYoutubeVideo item={item}></ProjectYoutubeVideo></div>}
-                    <Divider sx={{marginTop: 5, marginBottom: 5}}></Divider>
+                    <Typography variant="body2" color="text.primary"> Link to project <a href={item.url}>{item.url}</a> </Typography>
+                    {item.ytVidId != null && <div><Divider sx={{ marginTop: 5, marginBottom: 5 }}></Divider> <ProjectYoutubeVideo item={item}></ProjectYoutubeVideo></div>}
+                    <Divider sx={{ marginTop: 5, marginBottom: 5 }}></Divider>
                     <Typography variant="h5"> Project README.md file content </Typography>
-                    <Divider sx={{marginTop: 5, marginBottom: 5}}></Divider>
-                    <ReactMarkdown children={readmeContent} remarkPlugins={[remarkGfm]} disallowedElements={['img']}/>
+                    <Divider sx={{ marginTop: 5, marginBottom: 5 }}></Divider>
+                    <ReactMarkdown children={readmeContent} remarkPlugins={[remarkGfm]} disallowedElements={['img']} />
                 </CardContent>
             </Collapse>
         </Card>

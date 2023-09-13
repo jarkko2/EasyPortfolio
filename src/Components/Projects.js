@@ -15,10 +15,10 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Projects() {
     return (
-        <Item>
+        <Item key="projects">
             {jsonData.map((item, index) => (
-                <div>
-                    <ProjectItem key={index} item={item}>
+                <div key={item.name + index} >
+                    <ProjectItem item={item}>
 
                     </ProjectItem>
                     <Divider sx={{ marginTop: 5, marginBottom: 5 }}></Divider>
