@@ -6,6 +6,8 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineDot from '@mui/lab/TimelineDot';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 
 import JsonTimelineItem from './JsonTimelineItem';
 
@@ -17,11 +19,30 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.primary,
 }));
 
-export default function JsonTimeline({jsonData}) {
+
+
+export default function JsonTimeline({ jsonData }) {
+    const imageToUse = (img) => {
+        switch (img) {
+            case "school":
+                return (
+                    <SchoolOutlinedIcon />
+                )
+            case "work":
+                return (
+                    <WorkOutlineOutlinedIcon />
+                )
+            default:
+                return (
+                    <WorkOutlineOutlinedIcon />
+                )
+        }
+    }
+
     return (
         <Item>
             <Timeline
-            
+
                 sx={{
                     [`& .${timelineItemClasses.root}:before`]: {
                         flex: 0,
@@ -33,8 +54,9 @@ export default function JsonTimeline({jsonData}) {
                     <TimelineItem key={index}>
                         <TimelineSeparator
                             style={{ height: '150px' }} // Adjust the height as needed
+                            color="primary"
                         >
-                            <TimelineDot />
+                            <TimelineDot variant="outlined" color="primary">{imageToUse(item.dotimg)}</TimelineDot>
                             {index !== jsonData.length - 1 && <TimelineConnector />}
                         </TimelineSeparator>
                         <JsonTimelineItem item={item} />

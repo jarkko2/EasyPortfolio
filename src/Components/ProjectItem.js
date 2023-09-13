@@ -52,7 +52,7 @@ export default function ProjectItem({ item }) {
                 setReadmeContent(decodedContent);
             })
             .catch((error) => {
-                if (error.response.status === 403) {
+                if (error?.response?.status === 403) {
                     console.error('Could not get README.md for ' + githubRepoUrl + ' Is the repository private?')
                 } else {
                     console.error('Error fetching README:', error);
