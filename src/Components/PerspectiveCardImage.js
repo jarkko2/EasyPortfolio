@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import CardMedia from '@mui/material/CardMedia';
 
 export default function PerspectiveCardImage({ imgSrc }) {
+
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isMouseOver, setIsMouseOver] = useState(false);
 
@@ -30,13 +31,17 @@ export default function PerspectiveCardImage({ imgSrc }) {
         setMousePosition({ x: 0, y: 0 });
     };
 
+        
+    if (imgSrc === ""){
+        return (<></>)
+    }
+
+
     return (
         <div
             style={{
                 display: 'flex',
                 justifyContent: 'center',
-                width: '100%',
-                height: '100%',
                 perspective: '1500px', // Adjust the perspective depth as needed
             }}
             onMouseMove={handleMouseMove}
@@ -45,23 +50,34 @@ export default function PerspectiveCardImage({ imgSrc }) {
         >
             <div
                 style={{
-                    width: '95%',
-                    height: '100%',
+                    width: '50%',
+                    height: '50%',
                     position: 'relative',
                     transformStyle: 'preserve-3d',
-                    transform: `rotateX(${isMouseOver ? -mousePosition.x : 0}deg) rotateY(${isMouseOver ? mousePosition.y : 0}deg)`,
-                    transition: 'transform 0.5s ease-out'
+                    transform: `rotateX(${isMouseOver ? mousePosition.x : 0}deg) rotateY(${isMouseOver ? -mousePosition.y : 0}deg)`,
+                    transition: 'transform 0s ease-out',
+
                 }}
             >
+                <div
+                style={{
+                    borderRadius: "10px",
+                    boxShadow: `${mousePosition.y}px ${mousePosition.x}px 20px 1px #a8a8a8`,
+                }}
+                >
+
+                
                 <CardMedia
                 style={{
-                    borderRadius: "10px"
+                    borderRadius: "10px",
+                    border: "solid #a8a8a8",
+                    borderWidth: "2px"
                 }}
                     component="img"
-                    height="300"
                     image={imgSrc}
                     lt="projTemp"
                 />
+                </div>
             </div>
         </div>
     );

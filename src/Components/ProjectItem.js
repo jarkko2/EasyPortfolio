@@ -64,7 +64,7 @@ export default function ProjectItem({ item }) {
         <Card key={item.name}>
             <CardHeader title={item.name}/>
             <ProjectImage item={item}> </ProjectImage>
-            <CardContent>""
+            <CardContent>
                 {item.usedTechnologies.map((name) => (
                     <Chip key={"chip_" + item.name + "_" + name} label={name} color="primary" variant="outlined" sx={{ margin: "5px" }} />
                 ))}
