@@ -42,22 +42,23 @@ export default function PerspectiveCardImage({ imgSrc }) {
             style={{
                 display: 'flex',
                 justifyContent: 'center',
-                perspective: '1500px', // Adjust the perspective depth as needed
+                perspective: '2000px', // Adjust the perspective depth as needed
+                paddingTop: "20px"
             }}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
         >
             <div
-                style={{
+                style={{ 
                     width: '50%',
                     height: '50%',
                     position: 'relative',
                     transformStyle: 'preserve-3d',
-                    transform: `rotateX(${isMouseOver ? mousePosition.x : 0}deg) rotateY(${isMouseOver ? -mousePosition.y : 0}deg)`,
-                    transition: 'transform 0s ease-out',
+                    transform: `rotateX(${isMouseOver ? mousePosition.x : 0}deg) rotateY(${isMouseOver ? -mousePosition.y : 0}deg) scale(${isMouseOver ? 1.3 : 1})`,
+                    transition: 'transform 0.1s linear',
 
                 }}
+                onMouseMove={handleMouseMove}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
             >
                 <div
                 style={{
@@ -71,7 +72,8 @@ export default function PerspectiveCardImage({ imgSrc }) {
                 style={{
                     borderRadius: "10px",
                     border: "solid #a8a8a8",
-                    borderWidth: "2px"
+                    borderWidth: "2px",
+                    maxHeight: "300px"
                 }}
                     component="img"
                     image={imgSrc}
