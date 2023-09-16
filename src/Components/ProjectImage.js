@@ -4,6 +4,8 @@ import image from '../Images/projTemp.png';
 
 export default function ProjectImage({ item }) {
     return (
-        <PerspectiveCardImage imgSrc={item.imgSrc}></PerspectiveCardImage>
-    )
+        item.imgSrc != null ? (
+            <PerspectiveCardImage imgSrc={item.imgSrc}></PerspectiveCardImage>
+        ) : null
+    );
 }
