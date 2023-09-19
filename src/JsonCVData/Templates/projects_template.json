@@ -1,15 +1,15 @@
 [
     {
-        "name" : "LazyDevPortfolio",
+        "name" : "EasyPortfolio",
         "desc" : "Portfolio app that can be easily configured as JSON data and React app will build frontend automatically.",
         "usedTechnologies" : [
             "React",
             "React Material UI",
             "Axios"
         ],
-        "url" : "https://github.com/jarkko2/LazyDevPortfolio/",
-        "imgSrc" : "https://github.com/jarkko2/LazyDevPortfolio/raw/main/image.png",
+        "url" : "https://github.com/jarkko2/EasyPortfolio/",
+        "imgSrc" : "https://github.com/jarkko2/EasyPortfolio/raw/main/image.png",
         "ytVidId" : "Ty4HPFQudPY",
-        "readMeUrl" : "https://api.github.com/repos/jarkko2/LazyDevPortfolio/readme"
+        "readMeUrl" : "https://api.github.com/repos/jarkko2/EasyPortfolio/readme"
     }
 ]
