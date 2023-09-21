@@ -7,6 +7,7 @@ import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -65,7 +66,7 @@ export default function Introduction() {
 
     function FindChip(name: string): Chip {
         for (const chip of chips) {
-            if (name == chip.name) {
+            if (name === chip.name) {
                 return chip;
             }
         }
@@ -139,6 +140,7 @@ export default function Introduction() {
             <Divider sx={{ marginBottom: "10px" }}></Divider>
             <KnownTechnologies/>
             <Divider sx={{ marginBottom: "10px", marginTop: "10px" }}></Divider>
+            <GitHubIcon sx={{ margin: "5px" }} onClick={() => handleClick(jsonData.githubUrl)} />
             <LinkedInIcon sx={{ margin: "5px" }} onClick={() => handleClick(jsonData.linkedInUrl)} />
             <EmailIcon sx={{ margin: "5px" }} onClick={() => handleClickOpen()} />
 
