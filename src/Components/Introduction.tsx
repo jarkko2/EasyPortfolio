@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import jsonData from '../JsonCVData/introduction.json'
 
 // Material UI
@@ -22,7 +22,7 @@ export default function Introduction() {
     // Format "yyyy-MM-dd"
     const dateOfBirth = new Date(jsonData.dateOfBirth);
 
-    let age = currentDate.getFullYear() - dateOfBirth.getFullYear();
+    let age : number = currentDate.getFullYear() - dateOfBirth.getFullYear();
 
     // Check if the birthdate has occurred this year or not
     if (
@@ -33,22 +33,24 @@ export default function Introduction() {
         age--; // Subtract 1 year if the birthdate hasn't occurred yet this year
     }
 
-    const chipColors = {
-        hobbyandschool: '#9c27b0',
-        school: '#7cb342',
-        hobby: '#1e88e5',
-        mostused: '#311b92'
-    };
+    enum ChipColor
+    {
+        HobbyAndSchool = '#9c27b0',
+        School = '#7cb342',
+        Hobby = '#1e88e5',
+        Mostused = '#311b92'
+    }
 
-    const chipDescriptions = {
-        mostused: 'Suurin käyttökokemus',
-        hobbyandschool: 'Harrastus ja koulu',
-        hobby: 'Harrastus',
-        school: 'Koulu',
-    };
+    enum ChipDescription
+    {
+        HobbyAndSchool = 'Suurin käyttökokemus',
+        School = 'Harrastus ja koulu',
+        Hobby = 'Harrastus',
+        Mostused = 'Koulu'
+    }
 
     const [open, setOpen] = useState(false);
-    const handleClick = (url) => {
+    const handleClick = (url : string) => {
         window.location.href = url;
     };
 
@@ -60,7 +62,7 @@ export default function Introduction() {
         setOpen(false);
     };
 
-    const introduction = `${jsonData.initialIntroduction.replace('birthYear', age)} ${jsonData.introduction}`;
+    const introduction = `${jsonData.initialIntroduction.replace('birthYear', age.toString())} ${jsonData.introduction}`;
     return (
         <div>
             <Typography variant="h4">{jsonData.title}</Typography>
@@ -68,12 +70,14 @@ export default function Introduction() {
             <Divider textAlign="left" sx={{ marginTop: 5 }}>
                 <Typography variant="h6">Teknologiaosaamiset</Typography>
             </Divider>
-            {Object.keys(chipDescriptions).map((name) => {
-                const color = chipColors[name];
+            
+            {Object.keys(ChipDescription).map((name : string) => {
+                const value = ChipDescription[name as keyof typeof ChipDescription];
+                const color = ChipColor[name as keyof typeof ChipColor];
                 return (
                     <Chip
                         key={name}
-                        label={chipDescriptions[name]}
+                        label={value}
                         style={{ backgroundColor: color || '#9c27b0', color: 'white' }}
                         variant="outlined"
                         sx={{ margin: '5px' }}
@@ -82,8 +86,9 @@ export default function Introduction() {
             })}
             <Divider sx={{ marginBottom: "10px" }}></Divider>
             {jsonData.knownTechnologies.map((name) => {
-                const parts = name.split(":");
-                const color = chipColors[parts[1]] || '#9c27b0';
+                const parts : string[] = name.split(":");
+                const part : string = parts[1].toString()
+                const color = ChipColor[part as keyof typeof ChipColor] || '#9c27b0';
                 return (
                     <Chip
                         key={name}
