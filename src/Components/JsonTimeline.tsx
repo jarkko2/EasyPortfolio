@@ -11,9 +11,11 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 
 import JsonTimelineItem from './JsonTimelineItem';
 
+import { HistoryItem } from './HistoryItem'
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body,
+    ...theme.typography.body1,
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.primary,
@@ -21,8 +23,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-export default function JsonTimeline({ jsonData }) {
-    const imageToUse = (img) => {
+export default function JsonTimeline({ jsonData } : { jsonData: HistoryItem[] }) {
+    const imageToUse = (img : string) => {
         switch (img) {
             case "school":
                 return (

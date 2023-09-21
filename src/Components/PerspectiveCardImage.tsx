@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import ProjectTypeItem from './ProjectTypeItem'
 
 // Material UI
 import CardMedia from '@mui/material/CardMedia';
 
-export default function PerspectiveCardImage({ imgSrc }) {
+export default function PerspectiveCardImage({ item }: { item: ProjectTypeItem }) {
 
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isMouseOver, setIsMouseOver] = useState(false);
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
         const element = e.currentTarget;
         const rect = element.getBoundingClientRect();
 
@@ -31,8 +32,8 @@ export default function PerspectiveCardImage({ imgSrc }) {
         setMousePosition({ x: 0, y: 0 });
     };
 
-        
-    if (imgSrc === ""){
+
+    if (item.imgSrc === "") {
         return (<></>)
     }
 
@@ -47,7 +48,7 @@ export default function PerspectiveCardImage({ imgSrc }) {
             }}
         >
             <div
-                style={{ 
+                style={{
                     width: '50%',
                     height: '50%',
                     position: 'relative',
@@ -61,24 +62,21 @@ export default function PerspectiveCardImage({ imgSrc }) {
                 onMouseLeave={handleMouseLeave}
             >
                 <div
-                style={{
-                    borderRadius: "10px",
-                    boxShadow: `${mousePosition.y}px ${mousePosition.x}px 20px 1px #a8a8a8`,
-                }}
+                    style={{
+                        borderRadius: "10px",
+                        boxShadow: `${mousePosition.y}px ${mousePosition.x}px 20px 1px #a8a8a8`,
+                    }}
                 >
-
-                
-                <CardMedia
-                style={{
-                    borderRadius: "10px",
-                    border: "solid #a8a8a8",
-                    borderWidth: "2px",
-                    maxHeight: "300px"
-                }}
-                    component="img"
-                    image={imgSrc}
-                    lt="projTemp"
-                />
+                    <CardMedia
+                        style={{
+                            borderRadius: "10px",
+                            border: "solid #a8a8a8",
+                            borderWidth: "2px",
+                            maxHeight: "300px"
+                        }}
+                        component="img"
+                        image={item.imgSrc}
+                    />
                 </div>
             </div>
         </div>

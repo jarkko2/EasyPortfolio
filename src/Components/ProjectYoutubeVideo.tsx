@@ -1,6 +1,7 @@
-import React from 'react';
 import YouTube from 'react-youtube';
-export default function ProjectYoutubeVideo({item}) {
+import ProjectTypeItem from './ProjectTypeItem';
+
+export default function ProjectYoutubeVideo({item} : {item : ProjectTypeItem}) {
     const opts = {
         height: '500px',
         width: '100%',
