@@ -4,10 +4,10 @@
     "initialIntroduction": "I am birthYear years old. birthYear will be replaced with your age set on dateOfBirth",
     "introduction": "This is a longer introduction",
     "knownTechnologies" : [
-        "Unity :mostused",
-        "C++ :school",
-        "Javascript :hobbyandschool",
-        ".NET Core :hobby"
+        "Unity :Mostused",
+        "C++ :School",
+        "Javascript :HobbyAndSchool",
+        ".NET Core :Hobby"
     ],
     "linkedInUrl":"",
     "email" : ""
