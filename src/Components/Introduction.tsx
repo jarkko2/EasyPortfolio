@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import jsonData from '../JsonCVData/introduction.json'
 
 // Material UI
@@ -22,7 +22,7 @@ export default function Introduction() {
     // Format "yyyy-MM-dd"
     const dateOfBirth = new Date(jsonData.dateOfBirth);
 
-    let age : number = currentDate.getFullYear() - dateOfBirth.getFullYear();
+    let age: number = currentDate.getFullYear() - dateOfBirth.getFullYear();
 
     // Check if the birthdate has occurred this year or not
     if (
@@ -33,24 +33,89 @@ export default function Introduction() {
         age--; // Subtract 1 year if the birthdate hasn't occurred yet this year
     }
 
-    enum ChipColor
-    {
-        HobbyAndSchool = '#9c27b0',
-        School = '#7cb342',
-        Hobby = '#1e88e5',
-        Mostused = '#311b92'
+    type Chip =
+        {
+            name: string;
+            desc: string;
+            color: string;
+        }
+
+    const chips: Chip[] = [
+        {
+            name: "Mostused",
+            desc: "Suurin käyttökokemus",
+            color: "#311b92",
+        },
+        {
+            name: "HobbyAndSchool",
+            desc: "Harrastus ja koulu",
+            color: "#9c27b0",
+        },
+        {
+            name: "Hobby",
+            desc: "Harrastus",
+            color: "#1e88e5",
+        },
+        {
+            name: "School",
+            desc: "Koulu",
+            color: "#7cb342",
+        },
+    ];
+
+    function FindChip(name: string): Chip {
+        for (const chip of chips) {
+            if (name == chip.name) {
+                return chip;
+            }
+        }
+        // Return red to highlight error situation
+        const defaultChip: Chip = {
+            name: "ChipNotFound",
+            desc: "ChipNotFound",
+            color: "#ff1100",
+        };
+        return defaultChip
     }
 
-    enum ChipDescription
-    {
-        HobbyAndSchool = 'Suurin käyttökokemus',
-        School = 'Harrastus ja koulu',
-        Hobby = 'Harrastus',
-        Mostused = 'Koulu'
+    const ChipDescriptions: React.FC = () => {
+        return (
+            <div>
+                {chips.map((chip) => (
+                    <Chip
+                        key={chip.name}
+                        label={chip.desc}
+                        style={{ backgroundColor: chip.color || '#9c27b0', color: 'white' }}
+                        variant="outlined"
+                        sx={{ margin: '5px' }}
+                    />
+                ))}
+            </div>
+        );
+    };
+
+    const KnownTechnologies: React.FC = () => {
+        return (
+            <div>
+                {jsonData.knownTechnologies.map((name) => {
+                    const parts: string[] = name.split(":");
+                    const color = FindChip(parts[1].toString()).color
+                    return (
+                        <Chip
+                            key={name}
+                            label={`${parts[0]}`}
+                            style={{ backgroundColor: color, color: "white" }}
+                            variant="outlined"
+                            sx={{ margin: "5px" }}
+                        />
+                    );
+                })}
+            </div>
+        )
     }
 
     const [open, setOpen] = useState(false);
-    const handleClick = (url : string) => {
+    const handleClick = (url: string) => {
         window.location.href = url;
     };
 
@@ -70,35 +135,9 @@ export default function Introduction() {
             <Divider textAlign="left" sx={{ marginTop: 5 }}>
                 <Typography variant="h6">Teknologiaosaamiset</Typography>
             </Divider>
-            
-            {Object.keys(ChipDescription).map((name : string) => {
-                const value = ChipDescription[name as keyof typeof ChipDescription];
-                const color = ChipColor[name as keyof typeof ChipColor];
-                return (
-                    <Chip
-                        key={name}
-                        label={value}
-                        style={{ backgroundColor: color || '#9c27b0', color: 'white' }}
-                        variant="outlined"
-                        sx={{ margin: '5px' }}
-                    />
-                );
-            })}
+            <ChipDescriptions />
             <Divider sx={{ marginBottom: "10px" }}></Divider>
-            {jsonData.knownTechnologies.map((name) => {
-                const parts : string[] = name.split(":");
-                const part : string = parts[1].toString()
-                const color = ChipColor[part as keyof typeof ChipColor] || '#9c27b0';
-                return (
-                    <Chip
-                        key={name}
-                        label={`${parts[0]}`}
-                        style={{ backgroundColor: color, color: "white" }}
-                        variant="outlined"
-                        sx={{ margin: "5px" }}
-                    />
-                );
-            })}
+            <KnownTechnologies/>
             <Divider sx={{ marginBottom: "10px", marginTop: "10px" }}></Divider>
             <LinkedInIcon sx={{ margin: "5px" }} onClick={() => handleClick(jsonData.linkedInUrl)} />
             <EmailIcon sx={{ margin: "5px" }} onClick={() => handleClickOpen()} />
