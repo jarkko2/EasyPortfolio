@@ -40,7 +40,6 @@ function NavigationBar() {
     setAnchorElNav(null);
   };
 
-
   const PageList: React.FC<{ isMobile: boolean }> = ({ isMobile }) => {
     return (
       <>

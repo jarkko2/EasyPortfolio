@@ -75,7 +75,7 @@ export default function Introduction() {
 
     const ChipDescriptions: React.FC = () => {
         return (
-            <div>
+            <>
                 {chips.map((chip) => (
                     <Chip
                         key={chip.name}
@@ -85,7 +85,7 @@ export default function Introduction() {
                         sx={{ margin: '5px' }}
                     />
                 ))}
-            </div>
+            </>
         );
     };
 
@@ -124,7 +124,7 @@ export default function Introduction() {
 
     const introduction = `${jsonData.initialIntroduction.replace('birthYear', age.toString())} ${jsonData.introduction}`;
     return (
-        <div>
+        <>
             <Typography variant="h4">{jsonData.title}</Typography>
             <Typography>{introduction}</Typography>
             <Divider textAlign="left" sx={{ marginTop: 5 }}>
@@ -158,7 +158,7 @@ export default function Introduction() {
                     </Button>
                 </DialogActions>
             </Dialog>
-        </div>
+        </>
     );
 
 }
