@@ -11,14 +11,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import PageType from './Types/PageType';
 
-type Page =
-  {
-    id: string;
-    friendlyName: string
-  }
-
-const pages: Page[] = [
+const pages: PageType[] = [
   {
     id: "job",
     friendlyName: "Työhistoria"

@@ -11,7 +11,7 @@ import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 
 import JsonTimelineItem from './JsonTimelineItem';
 
-import { HistoryItem } from './HistoryItem'
+import { HistoryTypeItem } from './Types/HistoryTypeItem'
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -21,30 +21,28 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.primary,
 }));
 
-
-
-export default function JsonTimeline({ jsonData } : { jsonData: HistoryItem[] }) {
-    const imageToUse = (img : string) => {
-        switch (img) {
-            case "school":
-                return (
-                    <SchoolOutlinedIcon />
-                )
-            case "work":
-                return (
-                    <WorkOutlineOutlinedIcon />
-                )
-            default:
-                return (
-                    <WorkOutlineOutlinedIcon />
-                )
-        }
+export default function JsonTimeline({ jsonData }: { jsonData: HistoryTypeItem[] }) {
+    const enum ImageType {
+        School = "school",
+        Work = "work"
     }
+
+    const imageToUse = (img: string) => {
+        const imageType: ImageType = img as ImageType; // Type assertion to ImageType
+
+        switch (imageType) {
+            case ImageType.School:
+                return <SchoolOutlinedIcon />;
+            case ImageType.Work:
+                return <WorkOutlineOutlinedIcon />;
+            default:
+                return <WorkOutlineOutlinedIcon />;
+        }
+    };
 
     return (
         <Item>
             <Timeline
-
                 sx={{
                     [`& .${timelineItemClasses.root}:before`]: {
                         flex: 0,
@@ -55,7 +53,7 @@ export default function JsonTimeline({ jsonData } : { jsonData: HistoryItem[] })
                 {jsonData.map((item, index) => (
                     <TimelineItem key={index}>
                         <TimelineSeparator
-                            style={{ height: '150px' }} // Adjust the height as needed
+                            style={{ height: '150px' }}
                             color="primary"
                         >
                             <TimelineDot variant="outlined" color="primary">{imageToUse(item.dotimg)}</TimelineDot>

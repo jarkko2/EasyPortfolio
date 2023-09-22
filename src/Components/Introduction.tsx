@@ -15,6 +15,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import ChipType from './Types/ChipType';
 
 
 export default function Introduction() {
@@ -34,14 +35,7 @@ export default function Introduction() {
         age--; // Subtract 1 year if the birthdate hasn't occurred yet this year
     }
 
-    type Chip =
-        {
-            name: string;
-            desc: string;
-            color: string;
-        }
-
-    const chips: Chip[] = [
+    const chips: ChipType[] = [
         {
             name: "Mostused",
             desc: "Suurin käyttökokemus",
@@ -64,14 +58,14 @@ export default function Introduction() {
         },
     ];
 
-    function FindChip(name: string): Chip {
+    function FindChip(name: string): ChipType {
         for (const chip of chips) {
             if (name === chip.name) {
                 return chip;
             }
         }
         // Return red to highlight error situation
-        const defaultChip: Chip = {
+        const defaultChip: ChipType = {
             name: "ChipNotFound",
             desc: "ChipNotFound",
             color: "#ff1100",
@@ -97,7 +91,7 @@ export default function Introduction() {
 
     const KnownTechnologies: React.FC = () => {
         return (
-            <div>
+            <>
                 {jsonData.knownTechnologies.map((name) => {
                     const parts: string[] = name.split(":");
                     const color = FindChip(parts[1].toString()).color
@@ -111,7 +105,7 @@ export default function Introduction() {
                         />
                     );
                 })}
-            </div>
+            </>
         )
     }
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import axios from 'axios';
-import ProjectTypeItem from './ProjectTypeItem'
+import ProjectTypeItem from './Types/ProjectTypeItem'
 
 // Material UI
 import Card from '@mui/material/Card';

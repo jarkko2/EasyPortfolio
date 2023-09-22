@@ -1,8 +1,8 @@
-type HistoryItem = {
+type HistoryTypeItem = {
     title: string;
     year: string;
     description: string;
     dotimg: string;
 }
 
-export { HistoryItem };
+export { HistoryTypeItem };
