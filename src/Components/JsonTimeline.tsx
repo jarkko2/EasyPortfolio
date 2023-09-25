@@ -4,22 +4,12 @@ import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineDot from '@mui/lab/TimelineDot';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 
 import JsonTimelineItem from './JsonTimelineItem';
-
 import { HistoryTypeItem } from './Types/HistoryTypeItem'
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body1,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.primary,
-}));
+import Item from './PaperStyle'
 
 export default function JsonTimeline({ jsonData }: { jsonData: HistoryTypeItem[] }) {
     const enum ImageType {

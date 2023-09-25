@@ -10,6 +10,7 @@ import Divider from '@mui/material/Divider';
 import Introduction from './Introduction';
 import Projects from './Projects';
 import { Typography } from '@mui/material';
+import Item from './PaperStyle'
 
 // Json data
 import jobJsonData from '../JsonCVData/jobhistory.json'
@@ -17,15 +18,6 @@ import studyJsonData from '../JsonCVData/studyhistory.json'
 import JsonTimeline from './JsonTimeline';
 
 export default function MainView() {
-
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(1),
-        textAlign: 'left',
-        color: theme.palette.text.primary,
-    }));
-
     const ImgItem = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,
@@ -41,6 +33,18 @@ export default function MainView() {
         justifyContent: 'center', // Center vertically and horizontally
     }));
 
+    interface TextDividerProps {
+        title: string;
+    }
+
+    const TextDivider: React.FC<TextDividerProps> = ({ title }) => {
+        return (
+            <Divider textAlign="left" sx={{ marginTop: 5, marginBottom: 5 }} id={title}>
+                <Typography variant="h4">{title}</Typography>
+            </Divider>
+        );
+    };
+
     return (
         <div>
             <CssBaseline />
@@ -54,39 +58,24 @@ export default function MainView() {
                         </Grid>
                         <Grid item xs={12} md={4} lg={4} style={{ display: 'flex', alignItems: 'stretch' }}>
                             <ImgItem>
-                                <img src={require('../Images/naama.jpg')} alt="Face of me" style={{ margin: '0 auto', width: "95%", borderRadius: "25px"}} />
+                                <img src={require('../Images/naama.jpg')} alt="Face of me" style={{ margin: '0 auto', width: "95%", borderRadius: "25px" }} />
                             </ImgItem>
                         </Grid>
                     </Grid>
                 </Box>
-                <Divider textAlign="left" sx={{ marginTop: 5, marginBottom: 5 }} id="job">
-                    <Typography variant="h4">Työhistoria</Typography>
-                </Divider>
-                <Box
-                    sx={{
-                        width: "100%"
-                    }}
-                >
+
+                <TextDivider title="Työhistoria" />
+                <Box sx={{ width: "100%" }}>
                     <JsonTimeline jsonData={jobJsonData}></JsonTimeline>
                 </Box>
-                <Divider textAlign="left" sx={{ marginTop: 5, marginBottom: 5 }} id="study">
-                    <Typography variant="h4">Opinnot</Typography>
-                </Divider>
-                <Box
-                    sx={{
-                        width: "100%"
-                    }}
-                >
+
+                <TextDivider title="Opinnot" />
+                <Box sx={{ width: "100%" }}>
                     <JsonTimeline jsonData={studyJsonData}></JsonTimeline>
                 </Box>
-                <Divider textAlign="left" sx={{ marginTop: 5, marginBottom: 5 }} id="projects">
-                    <Typography variant="h4">Projektit</Typography>
-                </Divider>
-                <Box
-                    sx={{
-                        width: "100%"
-                    }}
-                >
+
+                <TextDivider title="Projektit" />
+                <Box sx={{ width: "100%" }}>
                     <Projects />
                 </Box>
             </Container>
