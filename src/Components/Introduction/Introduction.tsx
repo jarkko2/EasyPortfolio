@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import jsonData from '../JsonCVData/introduction.json'
-import chips from '../JsonCVData/chips.json'
+import jsonData from '../../JsonCVData/introduction.json'
+import chips from '../../JsonCVData/chips.json'
 
 // Material UI
 import { Typography } from '@mui/material'
@@ -16,7 +16,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import ChipType from './Types/ChipType';
+import ChipType from '../Types/ChipType';
 
 
 export default function Introduction() {

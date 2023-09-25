@@ -8,8 +8,8 @@ import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 
 import JsonTimelineItem from './JsonTimelineItem';
-import { HistoryTypeItem } from './Types/HistoryTypeItem'
-import Item from './PaperStyle'
+import { HistoryTypeItem } from '../Types/HistoryTypeItem'
+import Item from '../CustomMUIStyles/PaperStyle'
 
 export default function JsonTimeline({ jsonData }: { jsonData: HistoryTypeItem[] }) {
     const enum ImageType {

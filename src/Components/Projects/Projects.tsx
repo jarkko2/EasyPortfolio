@@ -1,7 +1,7 @@
 import ProjectItem from './ProjectItem'
-import jsonData from '../JsonCVData/projects.json'
-import ProjectTypeItem from './Types/ProjectTypeItem';
-import Item from './PaperStyle'
+import jsonData from '../../JsonCVData/projects.json'
+import ProjectTypeItem from '../Types/ProjectTypeItem';
+import Item from '../CustomMUIStyles/PaperStyle'
 
 // Material UI
 import Divider from '@mui/material/Divider';

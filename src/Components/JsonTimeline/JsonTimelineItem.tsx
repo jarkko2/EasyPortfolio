@@ -1,6 +1,6 @@
 import TimelineContent from '@mui/lab/TimelineContent';
 import { Typography } from '@mui/material';
-import { HistoryTypeItem } from './Types/HistoryTypeItem'
+import { HistoryTypeItem } from '../Types/HistoryTypeItem'
 
 export default function JsonTimelineItem({ item }: { item: HistoryTypeItem }) {
     return (

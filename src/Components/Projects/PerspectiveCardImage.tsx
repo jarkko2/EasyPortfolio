@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ProjectTypeItem from './Types/ProjectTypeItem'
+import ProjectTypeItem from '../Types/ProjectTypeItem'
 
 // Material UI
 import CardMedia from '@mui/material/CardMedia';

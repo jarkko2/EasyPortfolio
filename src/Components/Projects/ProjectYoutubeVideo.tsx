@@ -1,5 +1,5 @@
 import YouTube from 'react-youtube';
-import ProjectTypeItem from './Types/ProjectTypeItem';
+import ProjectTypeItem from '../Types/ProjectTypeItem';
 
 export default function ProjectYoutubeVideo({item} : {item : ProjectTypeItem}) {
     const opts = {

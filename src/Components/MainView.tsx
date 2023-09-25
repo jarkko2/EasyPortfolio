@@ -7,15 +7,15 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
 
-import Introduction from './Introduction';
-import Projects from './Projects';
+import Introduction from './Introduction/Introduction';
+import Projects from './Projects/Projects';
 import { Typography } from '@mui/material';
-import Item from './PaperStyle'
+import Item from './CustomMUIStyles/PaperStyle'
 
 // Json data
 import jobJsonData from '../JsonCVData/jobhistory.json'
 import studyJsonData from '../JsonCVData/studyhistory.json'
-import JsonTimeline from './JsonTimeline';
+import JsonTimeline from './JsonTimeline/JsonTimeline';
 
 export default function MainView() {
     const ImgItem = styled(Paper)(({ theme }) => ({
