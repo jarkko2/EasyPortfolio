@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import jsonData from '../JsonCVData/introduction.json'
+import chips from '../JsonCVData/chips.json'
 
 // Material UI
 import { Typography } from '@mui/material'
@@ -34,29 +35,6 @@ export default function Introduction() {
     ) {
         age--; // Subtract 1 year if the birthdate hasn't occurred yet this year
     }
-
-    const chips: ChipType[] = [
-        {
-            name: "Mostused",
-            desc: "Suurin käyttökokemus",
-            color: "#311b92",
-        },
-        {
-            name: "HobbyAndSchool",
-            desc: "Harrastus ja koulu",
-            color: "#9c27b0",
-        },
-        {
-            name: "Hobby",
-            desc: "Harrastus",
-            color: "#1e88e5",
-        },
-        {
-            name: "School",
-            desc: "Koulu",
-            color: "#7cb342",
-        },
-    ];
 
     function FindChip(name: string): ChipType {
         for (const chip of chips) {

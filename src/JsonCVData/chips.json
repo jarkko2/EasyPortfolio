@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Mostused",
+        "desc": "Suurin käyttökokemus",
+        "color": "#311b92"
+    },
+    {
+        "name": "HobbyAndSchool",
+        "desc": "Harrastus ja koulu",
+        "color": "#9c27b0"
+    },
+    {
+        "name": "Hobby",
+        "desc": "Harrastus",
+        "color": "#1e88e5"
+    },
+    {
+        "name": "School",
+        "desc": "Koulu",
+        "color": "#7cb342"
+    }
+]
