@@ -73,19 +73,19 @@ export default function MainView() {
                 </Box>
                 <TextDivider title="Näyteikkuna" id="showcase" />
                 <Box sx={{ width: "100%" }}>
-                    <Showcase/>
+                    <Showcase />
                 </Box>
                 <TextDivider title="Työhistoria" id="job" />
                 <Box sx={{ width: "100%" }}>
                     <JsonTimeline jsonData={jobJsonData}></JsonTimeline>
                 </Box>
 
-                <TextDivider title="Opinnot" id="study"/>
+                <TextDivider title="Opinnot" id="study" />
                 <Box sx={{ width: "100%" }}>
                     <JsonTimeline jsonData={studyJsonData}></JsonTimeline>
                 </Box>
 
-                <TextDivider title="Projektit" id="projects"/>
+                <TextDivider title="Projektit" id="projects" />
                 <Box sx={{ width: "100%" }}>
                     <Projects />
                 </Box>
