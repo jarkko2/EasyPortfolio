@@ -15,7 +15,9 @@ import Item from './CustomMUIStyles/PaperStyle'
 // Json data
 import jobJsonData from '../JsonCVData/jobhistory.json'
 import studyJsonData from '../JsonCVData/studyhistory.json'
+
 import JsonTimeline from './JsonTimeline/JsonTimeline';
+import Showcase from './Introduction/Showcase';
 
 export default function MainView() {
     const ImgItem = styled(Paper)(({ theme }) => ({
@@ -63,7 +65,10 @@ export default function MainView() {
                         </Grid>
                     </Grid>
                 </Box>
-
+                <TextDivider title="Näyteikkuna" />
+                <Box sx={{ width: "100%" }}>
+                    <Showcase/>
+                </Box>
                 <TextDivider title="Työhistoria" />
                 <Box sx={{ width: "100%" }}>
                     <JsonTimeline jsonData={jobJsonData}></JsonTimeline>
