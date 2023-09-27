@@ -19,6 +19,9 @@ import studyJsonData from '../JsonCVData/studyhistory.json'
 import JsonTimeline from './JsonTimeline/JsonTimeline';
 import Showcase from './Introduction/Showcase';
 
+//@ts-ignore
+import Fade from 'react-reveal/Fade';
+
 export default function MainView() {
     const ImgItem = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -37,13 +40,16 @@ export default function MainView() {
 
     interface TextDividerProps {
         title: string;
+        id: string
     }
 
-    const TextDivider: React.FC<TextDividerProps> = ({ title }) => {
+    const TextDivider: React.FC<TextDividerProps> = ({ title, id }) => {
         return (
-            <Divider textAlign="left" sx={{ marginTop: 5, marginBottom: 5 }} id={title}>
-                <Typography variant="h4">{title}</Typography>
-            </Divider>
+            <Fade left>
+                <Divider textAlign="left" sx={{ marginTop: 5, marginBottom: 5 }} id={id}>
+                    <Typography variant="h4">{title}</Typography>
+                </Divider>
+            </Fade>
         );
     };
 
@@ -65,21 +71,21 @@ export default function MainView() {
                         </Grid>
                     </Grid>
                 </Box>
-                <TextDivider title="Näyteikkuna" />
+                <TextDivider title="Näyteikkuna" id="showcase" />
                 <Box sx={{ width: "100%" }}>
                     <Showcase/>
                 </Box>
-                <TextDivider title="Työhistoria" />
+                <TextDivider title="Työhistoria" id="job" />
                 <Box sx={{ width: "100%" }}>
                     <JsonTimeline jsonData={jobJsonData}></JsonTimeline>
                 </Box>
 
-                <TextDivider title="Opinnot" />
+                <TextDivider title="Opinnot" id="study"/>
                 <Box sx={{ width: "100%" }}>
                     <JsonTimeline jsonData={studyJsonData}></JsonTimeline>
                 </Box>
 
-                <TextDivider title="Projektit" />
+                <TextDivider title="Projektit" id="projects"/>
                 <Box sx={{ width: "100%" }}>
                     <Projects />
                 </Box>

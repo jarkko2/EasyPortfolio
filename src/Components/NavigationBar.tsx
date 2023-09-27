@@ -15,6 +15,10 @@ import PageType from './Types/PageType';
 
 const pages: PageType[] = [
   {
+    id: "showcase",
+    friendlyName: "Näyteikkuna"
+  },
+  {
     id: "job",
     friendlyName: "Työhistoria"
   },

@@ -9,6 +9,9 @@ import ProjectYoutubeVideo from '../Projects/ProjectYoutubeVideo';
 import ProjectTypeItem from '../Types/ProjectTypeItem';
 import showcaseJsonData from '../../JsonCVData/showcase.json'
 
+//@ts-ignore
+import Fade from 'react-reveal/Fade';
+
 export default function Showcase() {
 
     const showCaseItem: ShowcaseTypeItem = showcaseJsonData
@@ -23,15 +26,19 @@ export default function Showcase() {
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6} lg={6}>
                         <Item>
-                            <ProjectYoutubeVideo item={projectItem}></ProjectYoutubeVideo>
+                            <Fade>
+                                <ProjectYoutubeVideo item={projectItem}></ProjectYoutubeVideo>
+                            </Fade>
                         </Item>
                     </Grid>
                     <Grid item xs={12} md={6} lg={6} style={{ display: 'flex', alignItems: 'stretch' }}>
                         <Item>
-                            <Typography variant="h4" sx={{ margin: 2 }}>{showCaseItem.name}</Typography>
-                            <Divider sx={{ margin: 2 }} />
-                            <Typography variant="body1" sx={{ margin: 1 }}>{showCaseItem.body1} </Typography>
-                            <Typography variant="body1" sx={{ margin: 1 }}>{showCaseItem.body2} </Typography>
+                            <Fade>
+                                <Typography variant="h4" sx={{ margin: 2 }}>{showCaseItem.name}</Typography>
+                                <Divider sx={{ margin: 2 }} />
+                                <Typography variant="body1" sx={{ margin: 1 }}>{showCaseItem.body1} </Typography>
+                                <Typography variant="body1" sx={{ margin: 1 }}>{showCaseItem.body2} </Typography>
+                            </Fade>
                         </Item>
                     </Grid>
                 </Grid>

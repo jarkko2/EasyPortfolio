@@ -11,6 +11,9 @@ import JsonTimelineItem from './JsonTimelineItem';
 import { HistoryTypeItem } from '../Types/HistoryTypeItem'
 import Item from '../CustomMUIStyles/PaperStyle'
 
+//@ts-ignore
+import Fade from 'react-reveal/Fade';
+
 export default function JsonTimeline({ jsonData }: { jsonData: HistoryTypeItem[] }) {
     const enum ImageType {
         School = "school",
@@ -31,6 +34,7 @@ export default function JsonTimeline({ jsonData }: { jsonData: HistoryTypeItem[]
     };
 
     return (
+
         <Item>
             <Timeline
                 sx={{
@@ -41,18 +45,21 @@ export default function JsonTimeline({ jsonData }: { jsonData: HistoryTypeItem[]
                 }}
             >
                 {jsonData.map((item, index) => (
-                    <TimelineItem key={index}>
-                        <TimelineSeparator
-                            style={{ height: '150px' }}
-                            color="primary"
-                        >
-                            <TimelineDot variant="outlined" color="primary">{imageToUse(item.dotimg)}</TimelineDot>
-                            {index !== jsonData.length - 1 && <TimelineConnector />}
-                        </TimelineSeparator>
-                        <JsonTimelineItem item={item} />
-                    </TimelineItem>
+                    <Fade duration={1000}>
+                        <TimelineItem key={index}>
+                            <TimelineSeparator
+                                style={{ height: '150px' }}
+                                color="primary"
+                            >
+                                <TimelineDot variant="outlined" color="primary">{imageToUse(item.dotimg)}</TimelineDot>
+                                {index !== jsonData.length - 1 && <TimelineConnector />}
+                            </TimelineSeparator>
+                            <JsonTimelineItem item={item} />
+                        </TimelineItem>
+                    </Fade>
                 ))}
             </Timeline>
         </Item>
+
     )
 }
