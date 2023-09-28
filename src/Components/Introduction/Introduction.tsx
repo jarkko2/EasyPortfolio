@@ -18,6 +18,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import ChipType from '../Types/ChipType';
 
+import localizations from '../../JsonCVData/localizations.json'
 
 export default function Introduction() {
     const currentDate = new Date();
@@ -106,7 +107,7 @@ export default function Introduction() {
             <Typography variant="h4">{jsonData.title}</Typography>
             <Typography>{introduction}</Typography>
             <Divider textAlign="left" sx={{ marginTop: 5 }}>
-                <Typography variant="h6">Teknologiaosaamiset</Typography>
+                <Typography variant="h6">{localizations.knownTechnologiesText}</Typography>
             </Divider>
             <ChipDescriptions />
             <Divider sx={{ marginBottom: "10px" }}></Divider>

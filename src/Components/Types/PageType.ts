@@ -1,7 +1,6 @@
 type PageType =
   {
-    id: string;
-    friendlyName: string
+    id: string
   }
 
   export default PageType

@@ -13,24 +13,35 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import PageType from './Types/PageType';
 
+import localizationsJson from '../JsonCVData/localizations.json'
+import { LocalizationType } from './Types/LocalizationType';
+
 const pages: PageType[] = [
   {
-    id: "showcase",
-    friendlyName: "Näyteikkuna"
+    id: "showcase"
   },
   {
-    id: "job",
-    friendlyName: "Työhistoria"
+    id: "jobhistory"
   },
   {
-    id: "study",
-    friendlyName: "Opinnot"
+    id: "studies"
   },
   {
-    id: "projects",
-    friendlyName: "Projektit"
+    id: "projects"
   }
 ];
+
+const localizations: LocalizationType[] = Object.entries(localizationsJson).map(([id, text]) => ({ id, text }));
+
+function FindTranslation(id: string): string {
+  const localization = localizations.find((item) => item.id === id);
+
+  if (localization) {
+    return localization.text;
+  } else {
+    return "Translation not found";
+  }
+}
 
 function NavigationBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<HTMLElement | null>(null);
@@ -50,7 +61,7 @@ function NavigationBar() {
         {pages.map((page) => (
           isMobile ? (
             <MenuItem key={page.id} onClick={() => handleCloseNavMenu(page.id)}>
-              <Typography textAlign="center">{page.friendlyName}</Typography>
+              <Typography textAlign="center">{FindTranslation(page.id)}</Typography>
             </MenuItem>
           ) : (
             <Button
@@ -58,7 +69,7 @@ function NavigationBar() {
               onClick={() => handleCloseNavMenu(page.id)}
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              {page.friendlyName}
+              {FindTranslation(page.id)}
             </Button>
           )
         ))}

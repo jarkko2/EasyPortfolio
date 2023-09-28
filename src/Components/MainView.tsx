@@ -15,6 +15,7 @@ import Item from './CustomMUIStyles/PaperStyle'
 // Json data
 import jobJsonData from '../JsonCVData/jobhistory.json'
 import studyJsonData from '../JsonCVData/studyhistory.json'
+import localizations from '../JsonCVData/localizations.json'
 
 import JsonTimeline from './JsonTimeline/JsonTimeline';
 import Showcase from './Introduction/Showcase';
@@ -71,21 +72,21 @@ export default function MainView() {
                         </Grid>
                     </Grid>
                 </Box>
-                <TextDivider title="Näyteikkuna" id="showcase" />
+                <TextDivider title={localizations.showcaseText} id="showcase" />
                 <Box sx={{ width: "100%" }}>
                     <Showcase />
                 </Box>
-                <TextDivider title="Työhistoria" id="job" />
+                <TextDivider title={localizations.jobHistoryText}  id="jobhistory" />
                 <Box sx={{ width: "100%" }}>
                     <JsonTimeline jsonData={jobJsonData}></JsonTimeline>
                 </Box>
 
-                <TextDivider title="Opinnot" id="study" />
+                <TextDivider title={localizations.studiesText}  id="studies" />
                 <Box sx={{ width: "100%" }}>
                     <JsonTimeline jsonData={studyJsonData}></JsonTimeline>
                 </Box>
 
-                <TextDivider title="Projektit" id="projects" />
+                <TextDivider title={localizations.projectsText}  id="projects" />
                 <Box sx={{ width: "100%" }}>
                     <Projects />
                 </Box>
