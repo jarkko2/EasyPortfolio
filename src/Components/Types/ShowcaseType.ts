@@ -3,4 +3,5 @@ type ShowcaseTypeItem = {
         "body1" : string;
         "body2" : string;
         "ytVidId": string;
+        "imgSrc" ?: string;
 }
